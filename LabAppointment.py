@@ -1,7 +1,7 @@
 # @Author  : Harrison
 # @Time   : 2023/5/12 23:23
 # @Function: 实验室预约
-#修改phone,userId,roomSeatId(先登录）
+#修改phone,userId,roomSeatId(先登录）,开始日期,预约天数
 import datetime
 
 import datetime
@@ -16,7 +16,7 @@ params = {
     "roomSeatId": "3619",
     "_": "1683901200122"
 }
-reserveDay=datetime.datetime(2023, 5, 14)
+reserveDay=datetime.datetime(2023, 5, 14) #开始的日期的前一天
 start_time = datetime.time(8, 0)
 time_ranges = [(start_time, datetime.time(8, 45)),
                (datetime.time(8, 46), datetime.time(9, 30)),
@@ -32,7 +32,7 @@ time_ranges = [(start_time, datetime.time(8, 45)),
                (datetime.time(17, 1), datetime.time(17, 59)),
                (datetime.time(18, 0), datetime.time(18, 45))]
 
-# 循环输出各个时间段
+# 这里30代表往后预约30天（最好看下预约界面最晚能预约到哪一天，小心管理员找你谈话）
 
 for i in range(30):
     reserveDay += datetime.timedelta(days=1)

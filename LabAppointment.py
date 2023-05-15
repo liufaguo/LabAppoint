@@ -42,7 +42,7 @@ for i in range(30):
     for start, end in time_ranges:
         # print(f"{start.strftime('%H:%M')}-{end.strftime('%H:%M')}")
         reserveTimeId += 1
-        start_str = start_time.strftime("%H:%M")
+        start_str = start.strftime("%H:%M")
         end_str = end.strftime('%H:%M')
         print(end_str)
         params["startTime"] = start_str

@@ -49,8 +49,10 @@ for i in range(30):
         params["endTime"] = end_str
         if (end_str == '12:59'):
             params["reserveTimeId"]=str(19)
+            reserveTimeId-=1
         elif (end_str == '17:59'):
             params["reserveTimeId"] = str(20)
+            reserveTimeId-=1
         else:
             params["reserveTimeId"] = str(reserveTimeId)
         response = requests.get(url, params=params)

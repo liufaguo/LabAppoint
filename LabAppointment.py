@@ -11,12 +11,17 @@ url = "http://172.19.231.2:10269/reservation/reserveRecord/doReserve"
 params = {
     "roomId": "36",
     "purpose": "实验室",
-    "phone": "",
+    "phone": "18324983064",
     "userId": "212503028",
-    "roomSeatId": "3619",
+    # "roomSeatId": "3619",
+    "roomSeatId": "3618",
+    # "roomSeatId": "3404",
     "_": "1683901200122"
 }
-reserveDay=datetime.datetime(2023, 5, 14) #开始的日期的前一天
+
+
+
+reserveDay=datetime.datetime(2023, 6, 13) #开始的日期的前一天
 start_time = datetime.time(8, 0)
 time_ranges = [(start_time, datetime.time(8, 45)),
                (datetime.time(8, 46), datetime.time(9, 30)),
@@ -30,11 +35,13 @@ time_ranges = [(start_time, datetime.time(8, 45)),
                (datetime.time(15, 31), datetime.time(16, 15)),
                (datetime.time(16, 16), datetime.time(17, 0)),
                (datetime.time(17, 1), datetime.time(17, 59)),
-               (datetime.time(18, 0), datetime.time(18, 45))]
+               (datetime.time(18, 0), datetime.time(18, 45)),
+               (datetime.time(18, 46), datetime.time(19, 30)),
+               (datetime.time(19, 40), datetime.time(22, 25))]
 
 # 这里30代表往后预约30天（最好看下预约界面最晚能预约到哪一天，小心管理员找你谈话）
 
-for i in range(30):
+for i in range(120):
     reserveDay += datetime.timedelta(days=1)
     print(reserveDay.strftime('%Y-%m-%d'))
     params["reserveDay"]=reserveDay.strftime('%Y-%m-%d')
@@ -47,6 +54,7 @@ for i in range(30):
         print(end_str)
         params["startTime"] = start_str
         params["endTime"] = end_str
+        print(start_str, end_str, reserveTimeId)
         if (end_str == '12:59'):
             params["reserveTimeId"]=str(19)
             reserveTimeId-=1
@@ -60,4 +68,5 @@ for i in range(30):
             print(response.text)
         else:
             print("Error: ", response.status_code)
+
 

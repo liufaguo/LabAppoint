@@ -11,8 +11,8 @@ url = "http://172.19.231.2:10269/reservation/reserveRecord/doReserve"
 params = {
     "roomId": "36",
     "purpose": "实验室",
-    "phone": "18324983064",
-    "userId": "212503028",
+    "phone": "",
+    "userId": "",
     # "roomSeatId": "3619",
     "roomSeatId": "3618",
     # "roomSeatId": "3404",

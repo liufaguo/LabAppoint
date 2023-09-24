@@ -6,6 +6,11 @@ import datetime
 
 import datetime
 import requests
+#预约天数（最好看下预约界面最晚能预约到哪一天）
+reserveDays=30
+#开始日期
+reserveDay=datetime.datetime(2023, 9, 23) #开始的日期的前一天
+
 
 url = "http://172.19.231.2:10269/reservation/reserveRecord/doReserve"
 params = {
@@ -18,17 +23,10 @@ params = {
     #学号
     "userId": "212503028",
     #座位号
+    # "roomSeatId": "3619",
     "roomSeatId": "3618",
-
     "_": "1683901200122"
 }
-
-#预约天数
-reserve_days=60
-#预约开始日期
-reserveDay=datetime.datetime(2023, 9, 23) #开始的日期的前一天
-
-
 
 start_time = datetime.time(8, 0)
 time_ranges = [(start_time, datetime.time(8, 45)),
@@ -47,9 +45,7 @@ time_ranges = [(start_time, datetime.time(8, 45)),
                (datetime.time(18, 46), datetime.time(19, 30)),
                (datetime.time(19, 40), datetime.time(22, 25))]
 
-# 这里30代表往后预约30天（最好看下预约界面最晚能预约到哪一天，小心管理员找你谈话）
-
-for i in range(reserve_days):
+for i in range(reserveDays):
     reserveDay += datetime.timedelta(days=1)
     print(reserveDay.strftime('%Y-%m-%d'))
     params["reserveDay"]=reserveDay.strftime('%Y-%m-%d')
